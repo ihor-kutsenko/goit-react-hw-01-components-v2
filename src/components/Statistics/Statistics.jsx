@@ -1,27 +1,35 @@
 import PropTypes from 'prop-types';
 import { getRandomHexColor } from './randomColor';
+import {
+  StatisticsSection,
+  StatisticsTitle,
+  StatisticsList,
+  StatisticsItem,
+  StatisticsContent,
+} from './Statistics.styled';
 
-
-const Statistics = ({ title, stats }) => {
+export const Statistics = ({ title, stats }) => {
   return (
-    <section class="statistics">
-      {title && <h2 className="title">{title}</h2>}
+    <StatisticsSection >
+      {title && <StatisticsTitle>{title}</StatisticsTitle>}
 
-      <ul class="stat-list">
+      <StatisticsList>
         {stats.map(stat => {
           let randomBGColor = getRandomHexColor();
           return (
-            <li class="item" key={stat.id} style={{backgroundColor:`${randomBGColor}`}}>
-          <span class="label">{stat.label}</span>
-          <span class="percentage">{stat.percentage}%</span>
-        </li>
-        
-          )
+            <StatisticsItem
+              key={stat.id}
+              style={{ backgroundColor: `${randomBGColor}` }}
+            >
+              <StatisticsContent>{stat.label}</StatisticsContent>
+              <StatisticsContent>{stat.percentage}%</StatisticsContent>
+            </StatisticsItem>
+          );
         })}
-      </ul>
-    </section>
+      </StatisticsList>
+    </StatisticsSection>
   );
-}
+};
 
 Statistics.propTypes = {
   title: PropTypes.string,
@@ -30,8 +38,6 @@ Statistics.propTypes = {
       id: PropTypes.string.isRequired,
       label: PropTypes.string.isRequired,
       percentage: PropTypes.number.isRequired,
-    }),
+    })
   ),
 };
-
-export default Statistics;

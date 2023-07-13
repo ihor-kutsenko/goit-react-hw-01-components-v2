@@ -1,15 +1,17 @@
-import user from './Profile/user.json';
-import Profile  from './Profile/Profile';
-import data from './Statistics/data.json';
-import Statistics  from './Statistics/Statistics';
-import friends from './FriendList/friends.json';
-import FriendList from './FriendList/FriendList';
-import transactions from './TransactionHistory/transactions.json';
-import TransactionHistory from './TransactionHistory/TransactionHistory';
+import user from '../data/user.json';
+import { Profile } from './Profile/Profile';
+import data from '../data/data.json';
+import { Statistics } from './Statistics/Statistics';
+import friends from '../data/friends.json';
+import { FriendList } from './FriendList/FriendList';
+import transactions from '../data/transactions.json';
+import { TransactionHistory } from './TransactionHistory/TransactionHistory';
+import { GlobalStyle } from './GlobalStyle';
 
- const App = () => {
+export const App = () => {
   return (
     <>
+      <GlobalStyle />
       <Profile
         username={user.username}
         tag={user.tag}
@@ -24,4 +26,3 @@ import TransactionHistory from './TransactionHistory/TransactionHistory';
     </>
   );
 };
-export default App;

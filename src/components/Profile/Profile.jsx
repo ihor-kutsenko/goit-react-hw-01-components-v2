@@ -1,30 +1,40 @@
 import PropTypes from 'prop-types';
+import {
+  ProfileContainer,
+  ProfileUserImage,
+  ProfileUserName,
+  ProfileUserTag,
+  ProfileUserLocation,
+  ProfileUserStats,
+  ProfileUserList,
+  ProfileUserListContent,
+} from './Profile.styled';
 
- const Profile = ({ username, tag, location, avatar, stats }) => {
+export const Profile = ({ username, tag, location, avatar, stats }) => {
   return (
-    <div class="profile">
-      <div class="description">
-        <img src={avatar} alt={username} class="avatar" width="250" />
-        <p class="name">{username}</p>
-        <p class="tag">@{tag}</p>
-        <p class="location">{location}</p>
+    <ProfileContainer>
+      <div>
+        <ProfileUserImage src={avatar} alt={username} width="250" />
+        <ProfileUserName>{username}</ProfileUserName>
+        <ProfileUserTag>@{tag}</ProfileUserTag>
+        <ProfileUserLocation>{location}</ProfileUserLocation>
       </div>
 
-      <ul class="stats">
-        <li>
-          <span class="label">Followers</span>
-          <span class="quantity">{stats.followers}</span>
-        </li>
-        <li>
-          <span class="label">Views</span>
-          <span class="quantity">{stats.views}</span>
-        </li>
-        <li>
-          <span class="label">Likes</span>
-          <span class="quantity">{stats.likes}</span>
-        </li>
-      </ul>
-    </div>
+      <ProfileUserStats>
+        <ProfileUserList>
+          <ProfileUserListContent>Followers</ProfileUserListContent>
+          <ProfileUserListContent>{stats.followers}</ProfileUserListContent>
+        </ProfileUserList>
+        <ProfileUserList>
+          <ProfileUserListContent>Views</ProfileUserListContent>
+          <ProfileUserListContent>{stats.views}</ProfileUserListContent>
+        </ProfileUserList>
+        <ProfileUserList>
+          <ProfileUserListContent>Likes</ProfileUserListContent>
+          <ProfileUserListContent>{stats.likes}</ProfileUserListContent>
+        </ProfileUserList>
+      </ProfileUserStats>
+    </ProfileContainer>
   );
 };
 
@@ -39,5 +49,3 @@ Profile.propTypes = {
     likes: PropTypes.number.isRequired,
   }),
 };
-
-export default Profile;
